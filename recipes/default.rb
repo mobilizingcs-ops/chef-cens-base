@@ -18,12 +18,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.set['system']['packages']['uninstall']['nano']
+node.set['system']['packages']['uninstall'] = ['nano']
 node.set['system']["timezone"] = "US/Pacific"
 
 include_recipe "system::hostname"
 include_recipe "system::timezone"
-include_recipe "system::uinstall_packages"
+include_recipe "system::uninstall_packages"
 include_recipe "vim"
 include_recipe "emacs"
 include_recipe "ntp"
