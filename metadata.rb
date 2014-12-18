@@ -10,3 +10,4 @@ depends "system", "~> 0.3.3"
 depends "vim", "~> 1.1.2"
 depends "emacs", "~> 0.9.0"
 depends "ntp", "~> 1.6.5"
+depends 'sshd', '~> 1.1.1'
