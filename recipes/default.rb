@@ -21,6 +21,7 @@
 node.set['system']['packages']['uninstall'] = ['nano']
 node.set['system']["timezone"] = "US/Pacific"
 
+include_recipe "apt"
 include_recipe "system::hostname"
 include_recipe "system::timezone"
 include_recipe "system::uninstall_packages"

@@ -13,3 +13,4 @@ depends "ntp", "~> 1.6.5"
 depends 'sshd', '~> 1.1.1'
 depends 'nfs', '~> 2.0.0'
 depends 'curl', '~> 2.0.1'
+depends 'apt'
