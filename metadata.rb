@@ -4,7 +4,7 @@ maintainer_email 'YOUR_EMAIL'
 license          'All rights reserved'
 description      'Installs/Configures cens-base'
 long_description 'Installs/Configures cens-base'
-version          '0.1.0'
+version          '0.1.1'
 
 depends "system", "~> 0.3.3"
 depends "vim", "~> 1.1.2"
