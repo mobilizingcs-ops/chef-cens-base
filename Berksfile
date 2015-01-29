@@ -9,4 +9,5 @@ cookbook "ntp", "~> 1.6.5"
 cookbook 'openssh', '~> 1.3.4'
 cookbook 'nfs', '~> 2.0.0'
 cookbook 'curl', '~> 2.0.1'
+cookbook 'postfix', '~> 3.6.2'
 cookbook "apt"
