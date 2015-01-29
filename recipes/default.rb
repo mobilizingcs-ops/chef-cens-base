@@ -55,5 +55,4 @@ include_recipe "ntp"
 include_recipe "openssh"
 include_recipe "curl"
 include_recipe "postfix"
-#exclude nfs installation until https://github.com/atomic-penguin/cookbook-nfs/issues/43 is looked at.
-#include_recipe "nfs::client4"
+include_recipe "nfs::client4"
