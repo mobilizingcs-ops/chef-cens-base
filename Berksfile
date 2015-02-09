@@ -11,3 +11,4 @@ cookbook 'curl', '~> 2.0.1'
 cookbook 'postfix', '~> 3.6.2'
 cookbook "apt", '~> 2.6.1'
 cookbook "nfs", git: "https://github.com/stevenolen/cookbook-nfs.git"
+cookbook 'chef-client', "~> 4.0.0"

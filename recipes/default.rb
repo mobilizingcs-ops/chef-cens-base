@@ -46,6 +46,11 @@ node.set['ntp']['servers'] = [
 node.set['postfix']['main']['smtpd_use_tls'] = "no"
 node.set['postfix']['main']['smtp_use_tls'] = "no"
 
+#set chef-client not to verify api cert for now
+node.set[:chef_client][:config]["verify_api_cert"] = false
+
+include_recipe "chef-client::config"
+include_recipe "chef-client::init_service"
 include_recipe "apt"
 include_recipe "system::timezone"
 include_recipe "system::uninstall_packages"
@@ -56,3 +61,4 @@ include_recipe "openssh"
 include_recipe "curl"
 include_recipe "postfix"
 include_recipe "nfs::client4"
+

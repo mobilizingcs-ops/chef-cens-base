@@ -15,3 +15,4 @@ depends 'nfs', '~> 2.0.2'
 depends 'curl', '~> 2.0.1'
 depends 'postfix', '~> 3.6.2'
 depends 'apt', '~> 2.6.1'
+depends 'chef-client', "~> 4.0.0"
