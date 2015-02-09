@@ -1,3 +1,6 @@
+# 0.2.0
+chef-client will automatically check in
+
 # 0.1.10
 
 Add postfix install
