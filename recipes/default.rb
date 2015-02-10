@@ -49,8 +49,6 @@ node.set['postfix']['main']['smtp_use_tls'] = "no"
 #set chef-client not to verify api cert for now
 node.set[:chef_client][:config]["verify_api_cert"] = false
 
-include_recipe "chef-client::config"
-include_recipe "chef-client::init_service"
 include_recipe "apt"
 include_recipe "system::timezone"
 include_recipe "system::uninstall_packages"
@@ -61,4 +59,6 @@ include_recipe "openssh"
 include_recipe "curl"
 include_recipe "postfix"
 include_recipe "nfs::client4"
-
+#include these at the end, so we don't run chef-client init unless the rest of the recipes were successful!
+include_recipe "chef-client::config"
+include_recipe "chef-client::init_service"
