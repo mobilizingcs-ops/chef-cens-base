@@ -1,5 +1,5 @@
-# 0.2.0
-chef-client will automatically check in
+# 1.0.0
+chef-client will automatically check in, should be very stable on all linux nodes in this environment
 
 # 0.1.10
 
