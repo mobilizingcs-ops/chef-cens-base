@@ -31,7 +31,11 @@ node.set[:openssh][:server]['PermitEmptyPasswords'] = "no"
 node.set[:openssh][:server]['PasswordAuthentication'] = "yes"
 node.set[:openssh][:server]['AcceptEnv'] = "LANG LC_*"
 node.set[:openssh][:server]['Subsystem'] = "sftp /usr/lib/openssh/sftp-server"
-node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root"
+if node['fqdn'] == "apollo.ohmage.org"
+  node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root ousers"
+else
+  node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root"
+end
 
 #ntp server config - use local ucla time server when possible
 node.set['ntp']['servers'] = [
