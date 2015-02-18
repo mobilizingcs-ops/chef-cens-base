@@ -4,7 +4,7 @@ maintainer_email 'technolengy@gmail.com'
 license          'Apache 2.0'
 description      'Installs/Configures cens-base'
 long_description 'Installs/Configures cens-base'
-version          '1.0.1'
+version          '1.0.2'
 
 depends "system", "~> 0.3.3"
 depends "vim", "~> 1.1.2"

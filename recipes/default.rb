@@ -32,7 +32,7 @@ node.set[:openssh][:server]['PasswordAuthentication'] = "yes"
 node.set[:openssh][:server]['AcceptEnv'] = "LANG LC_*"
 node.set[:openssh][:server]['Subsystem'] = "sftp /usr/lib/openssh/sftp-server"
 if node['fqdn'] == "apollo.ohmage.org"
-  node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root ousers"
+  node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root ousers mobilize"
 else
   node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root"
 end
