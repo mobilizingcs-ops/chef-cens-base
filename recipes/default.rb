@@ -63,6 +63,7 @@ include_recipe "openssh"
 include_recipe "curl"
 include_recipe "postfix"
 include_recipe "nfs::client4"
+include_recipe "htop"
 #include these at the end, so we don't run chef-client init unless the rest of the recipes were successful!
 include_recipe "chef-client::config"
 include_recipe "chef-client::init_service"
