@@ -1,3 +1,6 @@
+# 1.1.4
+merged freebsd recipe into default, only executing what I can.
+
 # 1.0.0
 chef-client will automatically check in, should be very stable on all linux nodes in this environment
 

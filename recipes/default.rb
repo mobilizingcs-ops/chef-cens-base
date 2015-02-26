@@ -18,8 +18,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.set['system']['packages']['uninstall'] = ['nano']
-node.set['system']["timezone"] = "US/Pacific"
 
 #sshd default config
 node.set[:openssh][:server]['HostKey'] = [ "/etc/ssh/ssh_host_rsa_key", "/etc/ssh/ssh_host_dsa_key", "/etc/ssh/ssh_host_ecdsa_key"]
@@ -46,24 +44,39 @@ node.set['ntp']['servers'] = [
   '3.pool.ntp.org'
 ]
 
-#postfix config should turn off TLS since we don't use it currently
-node.set['postfix']['main']['smtpd_use_tls'] = "no"
-node.set['postfix']['main']['smtp_use_tls'] = "no"
-
 #set chef-client not to verify api cert for now
 node.set[:chef_client][:config]["verify_api_cert"] = false
 
-include_recipe "apt"
-include_recipe "system::timezone"
-include_recipe "system::uninstall_packages"
+#no to freebsd
+unless node['platform'] == "freebsd"
+ node.set['system']['packages']['uninstall'] = ['nano'] #remove nano
+ node.set['system']["timezone"] = "US/Pacific" #set timezone
+ node.set['postfix']['main']['smtpd_use_tls'] = "no" 
+ node.set['postfix']['main']['smtp_use_tls'] = "no"
+ include_recipe "apt"
+ include_recipe "system::timezone"
+ include_recipe "system::uninstall_packages"
+ include_recipe "emacs"
+ include_recipe "curl"
+ include_recipe "postfix"
+ include_recipe "nfs::client4"
+end
+
+#yes to only freebsd
+if node['platform'] == "freebsd"
+ include_recipe "freebsd::pkgng"
+end
+
+#yes to all
 include_recipe "vim"
-include_recipe "emacs"
 include_recipe "ntp"
 include_recipe "openssh"
-include_recipe "curl"
-include_recipe "postfix"
-include_recipe "nfs::client4"
 include_recipe "htop"
-#include these at the end, so we don't run chef-client init unless the rest of the recipes were successful!
+
+#chef-client config at the end
 include_recipe "chef-client::config"
-include_recipe "chef-client::init_service"
+if node['platform'] == "freebsd"
+ include_recipe "chef-client::bsd_service"
+else
+ include_recipe "chef-client::init_service"
+end
