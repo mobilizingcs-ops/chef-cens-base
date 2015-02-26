@@ -22,4 +22,4 @@ include_recipe "freebsd::pkgng"
 
 node.set[:chef_client][:config]["verify_api_cert"] = false
 include_recipe "chef-client::config"
-include_recipe "chef-client::init_service"
+include_recipe "chef-client::bsd_service"
