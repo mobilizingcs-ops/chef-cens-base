@@ -34,6 +34,8 @@ when "apollo.ohmage.org"
   node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root ousers mobilize"
 when "dev.opencpu.org", "dev1.opencpu.org", "dev2.opencpu.org"
   node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root ousers jeroen"
+when "starbuck.ohmage.org", "cavil.ohmage.org"
+  node.set[:openssh][:server]['AllowGroups'] = "wheel"
 else
   node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root"
 end
