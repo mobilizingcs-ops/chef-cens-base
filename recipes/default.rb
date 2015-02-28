@@ -29,8 +29,11 @@ node.set[:openssh][:server]['PermitEmptyPasswords'] = "no"
 node.set[:openssh][:server]['PasswordAuthentication'] = "yes"
 node.set[:openssh][:server]['AcceptEnv'] = "LANG LC_*"
 node.set[:openssh][:server]['Subsystem'] = "sftp /usr/lib/openssh/sftp-server"
-if node['fqdn'] == "apollo.ohmage.org"
+case node['fqdn']
+when "apollo.ohmage.org"
   node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root ousers mobilize"
+when "dev.opencpu.org", "dev1.opencpu.org", "dev2.opencpu.org"
+  node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root ousers jeroen"
 else
   node.set[:openssh][:server]['AllowGroups'] = "oadmin localadmin ci-bot root"
 end
