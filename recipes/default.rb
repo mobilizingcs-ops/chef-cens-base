@@ -64,6 +64,7 @@ unless node['platform'] == 'freebsd'
   include_recipe 'curl'
   include_recipe 'postfix'
   include_recipe 'nfs::client4'
+  include_recipe 'openssl::upgrade'
 end
 
 # yes to only freebsd

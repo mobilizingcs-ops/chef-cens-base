@@ -4,7 +4,7 @@ maintainer_email 'technolengy@gmail.com'
 license 'Apache 2.0'
 description 'Installs/Configures cens-base'
 long_description 'Installs/Configures cens-base'
-version '1.1.7'
+version '1.1.9'
 
 %w(ubuntu debian freebsd centos).each do |os|
   supports os
@@ -22,3 +22,4 @@ depends 'apt', '~> 2.6.1'
 depends 'chef-client', '~> 4.0.0'
 depends 'freebsd'
 depends 'htop'
+depends 'openssl'
