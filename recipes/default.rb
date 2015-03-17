@@ -76,6 +76,9 @@ include_recipe 'ntp'
 include_recipe 'openssh'
 include_recipe 'htop'
 
+# keep ssl configs in a separate cookbook for now
+include_recipe 'cens-base::ssl'
+
 # chef-client config at the end
 include_recipe 'chef-client::config'
 if node['platform'] == 'freebsd'

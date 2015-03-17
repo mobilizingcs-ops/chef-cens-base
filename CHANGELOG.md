@@ -1,3 +1,6 @@
+# 1.1.14
+Probably a ton of things, but notably support for SSL keys using chef-vault (which is awesome)
+
 # 1.1.4
 merged freebsd recipe into default, only executing what I can.
 
