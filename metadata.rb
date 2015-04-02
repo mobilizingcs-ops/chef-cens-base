@@ -4,13 +4,13 @@ maintainer_email 'technolengy@gmail.com'
 license 'Apache 2.0'
 description 'Installs/Configures cens-base'
 long_description 'Installs/Configures cens-base'
-version '1.1.17'
+version '1.1.19'
 
 %w(ubuntu debian freebsd centos).each do |os|
   supports os
 end
 
-depends 'system', '~> 0.3.3'
+depends 'system', '~> 0.5.0'
 depends 'vim', '~> 1.1.2'
 depends 'emacs', '~> 0.9.0'
 depends 'ntp', '~> 1.6.5'
