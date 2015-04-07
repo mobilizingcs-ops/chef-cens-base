@@ -49,7 +49,7 @@ node.set['ntp']['servers'] = [
 ]
 
 # set chef-client not to verify api cert for now
-node.set['chef_clien']['config']['verify_api_cert'] = false
+node.set['chef_client']['config']['verify_api_cert'] = false
 
 # no to freebsd
 unless node['platform'] == 'freebsd'
@@ -75,9 +75,6 @@ include_recipe 'vim'
 include_recipe 'ntp'
 include_recipe 'openssh'
 include_recipe 'htop'
-
-# keep ssl configs in a separate cookbook for now
-include_recipe 'cens-base::ssl'
 
 # chef-client config at the end
 include_recipe 'chef-client::config'
