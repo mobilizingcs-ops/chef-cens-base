@@ -61,7 +61,9 @@ unless node['platform'] == 'freebsd'
   include_recipe 'postfix'
   include_recipe 'nfs::client4'
   include_recipe 'openssl::upgrade'
-  include_recipe 'cens-base::sudo'
+  unless node['virtualization']['role'] == 'host' # don't do sudo on hypervisors
+    include_recipe 'cens-base::sudo'
+  end
 end
 
 # yes to only freebsd

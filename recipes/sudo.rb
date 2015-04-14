@@ -18,6 +18,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+node.set['authorization']['sudo']['sudoers_defaults'] = [
+  'env_reset',
+  'secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"'
+]
+node.set['authorization']['sudo']['include_sudoers_d'] = true
+node.set['authorization']['sudo']['groups'] = ['sudo']
+
 include_recipe 'sudo'
 
 # oadmin group with snolen&hongsudt
@@ -32,4 +39,25 @@ sudo 'localadmin' do
   user 'localadmin'
   host 'ALL'
   nopasswd true
+end
+
+# ci-bot can run some commands as root
+# this logic is crappy and should likely be handled somewhere else.
+case node['fqdn']
+when 'ocpu.ohmage.org' # ocpu host
+  ci_commands = ['/usr/sbin/service opencpu restart', '/usr/bin/R CMD INSTALL plotbuilder --library=/usr/local/lib/R/site-library']
+when 'rstudio.mobilizingcs.org' # rstudio host
+  ci_commands = ['/usr/bin/R CMD INSTALL MobilizeSimple --library=/usr/local/lib/R/site-library']
+when 'pilots.mobilizelabs.org', 'sandbox.mobilizingcs.org', 'test.mobilizingcs.org', 'lausd.mobilizingcs.org' # ohmage hosts
+  ci_commands = ['/bin/cp -ur /home/ci-bot/* /var/www/*', '/bin/cp -r /home/ci-bot/* /var/lib/tomcat7/webapps/*', '/usr/sbin/service tomcat7 restart', '/bin/sed -i /var/www/survey/*']
+end
+
+ci_hosts = %w(ocpu.ohmage.org rstudio.mobilizingcs.org pilots.mobilizelabs.org test.mobilizingcs.org lausd.mobilizingcs.org)
+case node['fqdn']
+when *ci_hosts
+  sudo 'ci-bot' do
+    user 'ci-bot'
+    nopasswd true
+    commands ci_commands
+  end
 end
