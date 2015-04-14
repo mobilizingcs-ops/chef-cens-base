@@ -10,7 +10,6 @@ version '1.1.20'
   supports os
 end
 
-depends 'system', '~> 0.5.0'
 depends 'vim', '~> 1.1.2'
 depends 'emacs', '~> 0.9.0'
 depends 'ntp', '~> 1.6.5'

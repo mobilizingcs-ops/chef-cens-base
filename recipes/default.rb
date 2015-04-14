@@ -53,13 +53,12 @@ node.set['chef_client']['config']['verify_api_cert'] = false
 
 # no to freebsd
 unless node['platform'] == 'freebsd'
-  node.set['system']['packages']['uninstall'] = ['nano'] # remove nano
-  #node.set['system']['timezone'] = 'America/Los_Angeles' # set timezone
+  package 'nano' do
+    action :remove
+  end
   node.set['postfix']['main']['smtpd_use_tls'] = 'no'
   node.set['postfix']['main']['smtp_use_tls'] = 'no'
   include_recipe 'apt'
-  #include_recipe 'system::timezone'
-  include_recipe 'system::uninstall_packages'
   include_recipe 'emacs'
   include_recipe 'curl'
   include_recipe 'postfix'
