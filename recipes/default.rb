@@ -48,9 +48,6 @@ node.set['ntp']['servers'] = [
   '3.pool.ntp.org'
 ]
 
-# set chef-client not to verify api cert for now
-node.set['chef_client']['config']['verify_api_cert'] = false
-
 # no to freebsd
 unless node['platform'] == 'freebsd'
   package 'nano' do
