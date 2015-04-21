@@ -53,8 +53,20 @@ unless node['platform'] == 'freebsd'
   package 'nano' do
     action :remove
   end
-  node.set['postfix']['main']['smtpd_use_tls'] = 'no'
-  node.set['postfix']['main']['smtp_use_tls'] = 'no'
+  case node[:fqdn]
+  when 'support.mobilizingcs.org'
+    node.set['postfix']['main']['smtp_sasl_auth_enable'] = 'yes'
+    node.set['postfix']['main']['smtp_sasl_password_maps'] = 'hash:/etc/postfix/sasl_passwd'
+    node.set['postfix']['main']['smtp_sasl_security_options'] = 'noanonymous'
+    node.set['postfix']['main']['relayhost'] = '[smtp.gmail.com]:587'
+    node.set['postfix']['sasl']['smtp_sasl_user_name'] = 'support@mobilizingcs.org'
+    #node.set['postfix']['sasl']['smtp_sasl_passwd'] 
+    node.set['postfix']['main']['smtp_use_tls'] = 'yes'
+    node.set['postfix']['main']['smtp_tls_CAfile'] = '/etc/postfix/cacert.pem'
+  else
+    node.set['postfix']['main']['smtpd_use_tls'] = 'no'
+    node.set['postfix']['main']['smtp_use_tls'] = 'no'
+  end
   include_recipe 'apt'
   include_recipe 'emacs'
   include_recipe 'curl'
