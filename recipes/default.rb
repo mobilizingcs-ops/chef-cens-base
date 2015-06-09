@@ -54,7 +54,7 @@ unless node['platform'] == 'freebsd'
     action :remove
   end
   case node[:fqdn]
-  when 'support.mobilizingcs.org'
+  when 'support.mobilizingcs.org', 'lausd.mobilizingcs.org'
     node.set['postfix']['main']['smtp_sasl_auth_enable'] = 'yes'
     node.set['postfix']['main']['smtp_sasl_password_maps'] = 'hash:/etc/postfix/sasl_passwd'
     node.set['postfix']['main']['smtp_sasl_security_options'] = 'noanonymous'

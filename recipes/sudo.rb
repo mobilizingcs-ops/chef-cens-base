@@ -47,7 +47,7 @@ case node['fqdn']
 when 'ocpu.ohmage.org' # ocpu host
   ci_commands = ['/usr/sbin/service opencpu restart', '/usr/bin/R CMD INSTALL plotbuilder --library=/usr/local/lib/R/site-library']
 when 'rstudio.mobilizingcs.org' # rstudio host
-  ci_commands = ['/usr/bin/R CMD INSTALL MobilizeSimple --library=/usr/local/lib/R/site-library']
+  ci_commands = ['/usr/bin/R CMD INSTALL MobilizeR --library=/usr/local/lib/R/site-library']
 when 'pilots.mobilizelabs.org', 'sandbox.mobilizingcs.org', 'test.mobilizingcs.org', 'lausd.mobilizingcs.org' # ohmage hosts
   ci_commands = ['/bin/cp -ur /home/ci-bot/* /var/www/*', '/bin/cp -r /home/ci-bot/* /var/lib/tomcat7/webapps/*', '/usr/sbin/service tomcat7 restart', '/bin/sed -i /var/www/survey/*']
 end
