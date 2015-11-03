@@ -47,9 +47,9 @@ case node['fqdn']
 when 'ocpu.ohmage.org' # ocpu host
   ci_commands = ['/usr/sbin/service opencpu restart', '/usr/bin/R CMD INSTALL plotbuilder --library=/usr/local/lib/R/site-library']
 when 'rstudio.mobilizingcs.org' # rstudio host
-  ci_commands = ['/usr/bin/R CMD INSTALL MobilizeR --library=/usr/local/lib/R/site-library']
+  ci_commands = ['/usr/bin/R CMD INSTALL MobilizR --library=/usr/local/lib/R/site-library']
 when 'pilots.mobilizelabs.org', 'sandbox.mobilizingcs.org', 'test.mobilizingcs.org', 'lausd.mobilizingcs.org' # ohmage hosts
-  ci_commands = ['/bin/cp -ur /home/ci-bot/* /var/www/*', '/bin/cp -r /home/ci-bot/* /var/lib/tomcat7/webapps/*', '/usr/sbin/service tomcat7 restart', '/bin/sed -i /var/www/survey/*']
+  ci_commands = ['/bin/cp -ur /home/ci-bot/* /var/www/*', '/bin/cp -r /home/ci-bot/* /var/lib/tomcat7/webapps/*', '/bin/cp -r /home/ci-bot/* /opt/flyway/sql/*', '/opt/flyway/flyway *', '/usr/sbin/service tomcat7 *', '/bin/sed -i /var/www/survey/*']
 end
 
 ci_hosts = %w(ocpu.ohmage.org rstudio.mobilizingcs.org pilots.mobilizelabs.org test.mobilizingcs.org lausd.mobilizingcs.org)
