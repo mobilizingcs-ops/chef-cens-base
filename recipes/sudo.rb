@@ -49,7 +49,7 @@ when 'ocpu.ohmage.org' # ocpu host
 when 'rstudio.mobilizingcs.org' # rstudio host
   ci_commands = ['/usr/bin/R CMD INSTALL MobilizR --library=/usr/local/lib/R/site-library']
 when 'pilots.mobilizelabs.org', 'sandbox.mobilizingcs.org', 'test.mobilizingcs.org', 'lausd.mobilizingcs.org' # ohmage hosts
-  ci_commands = ['/bin/cp -ur /home/ci-bot/* /var/www/*', '/bin/cp -r /home/ci-bot/* /var/lib/tomcat7/webapps/*', '/bin/cp -r /home/ci-bot/* /opt/flyway/sql/*', '/opt/flyway/flyway *', '/usr/sbin/service tomcat7 *', '/bin/sed -i /var/www/survey/*', 'rm -rf /var/lib/tomcat7/webapps/app']
+  ci_commands = ['/bin/cp -ur /home/ci-bot/* /var/www/*', '/bin/cp -r /home/ci-bot/* /var/lib/tomcat7/webapps/*', '/bin/cp -r /home/ci-bot/* /opt/flyway/sql/*', '/opt/flyway/flyway *', '/usr/sbin/service tomcat7 *', '/bin/sed -i /var/www/survey/*', '/bin/rm -rf /var/lib/tomcat7/webapps/app']
 end
 
 ci_hosts = %w(ocpu.ohmage.org rstudio.mobilizingcs.org pilots.mobilizelabs.org test.mobilizingcs.org lausd.mobilizingcs.org)
