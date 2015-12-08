@@ -1,0 +1,14 @@
+# Managed by Chef for node <%= node['fqdn'] -%>.
+# /etc/nslcd.conf
+# nslcd configuration file. See nslcd.conf(5)
+# for details.
+
+# The user and group nslcd should run as.
+uid nslcd
+gid nslcd
+
+# The location at which the LDAP server(s) should be reachable.
+uri ldap://<%= @host %>:<%= @port || '389' %>/
+
+# The search base that will be used for all queries.
+base <%= @base_dn %>
