@@ -52,7 +52,7 @@ when 'pilots.mobilizelabs.org', 'sandbox.mobilizingcs.org', 'test.mobilizingcs.o
   ci_commands = ['/bin/cp -ur /home/ci-bot/* /var/www/*', '/bin/cp -r /home/ci-bot/* /var/lib/tomcat7/webapps/*', '/bin/cp -r /home/ci-bot/* /opt/flyway/sql/*', '/opt/flyway/flyway *', '/usr/sbin/service tomcat7 *', '/bin/sed -i /var/www/survey/*', '/bin/rm -rf /var/lib/tomcat7/webapps/app']
 end
 
-ci_hosts = %w(ocpu.ohmage.org rstudio.mobilizingcs.org pilots.mobilizelabs.org test.mobilizingcs.org lausd.mobilizingcs.org)
+ci_hosts = %w(ocpu.ohmage.org rstudio.mobilizingcs.org pilots.mobilizelabs.org test.mobilizingcs.org lausd.mobilizingcs.org sandbox.mobilizingcs.org)
 case node['fqdn']
 when *ci_hosts
   sudo 'ci-bot' do
