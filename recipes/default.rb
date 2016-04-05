@@ -30,7 +30,7 @@ node.set['openssh']['server']['AcceptEnv'] = 'LANG LC_*'
 node.set['openssh']['server']['Subsystem'] = 'sftp /usr/lib/openssh/sftp-server'
 case node['fqdn']
 when 'apollo.ohmage.org'
-  node.set['openss']['server']['AllowGroups'] = 'oadmin localadmin ci-bot root ousers mobilize'
+  node.set['openss']['server']['AllowGroups'] = 'oadmin localadmin ci-bot root ousers'
 when 'dev.opencpu.org', 'dev1.opencpu.org', 'dev2.opencpu.org'
   node.set['openssh']['server']['AllowGroups'] = 'oadmin localadmin ci-bot root ousers jeroen'
 when 'starbuck.ohmage.org', 'cavil.ohmage.org'
