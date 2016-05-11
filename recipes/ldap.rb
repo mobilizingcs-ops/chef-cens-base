@@ -40,7 +40,7 @@ when 'debian'
     notifies :restart, 'service[nscd]', :delayed
     notifies :run, 'execute[invalidate nscd cache]', :delayed
     variables(
-      host: '131.179.144.74',
+      host: '131.179.144.48',
       base_dn: 'dc=ohmage,dc=org'
     )
   end
